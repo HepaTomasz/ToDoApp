@@ -11,8 +11,7 @@ import UIKit
 class UserController: NSObject {
 
     static var userArray:Array<User> = []
-    
-    
+    var todoArray :Array<Todo> = []
     class func createAndAddNewUser(name:String, password:String) -> User
     {
         // create new User
@@ -58,7 +57,6 @@ class UserController: NSObject {
             UserController.userArray = decodedUserArr
         }
     }
-    
     
 }
 
