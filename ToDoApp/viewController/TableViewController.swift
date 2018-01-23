@@ -1,52 +1,86 @@
 //
-//  ToDosTableViewController.swift
+//  TableViewController.swift
 //  ToDoApp
 //
-//  Created by Tomasz Hepa on 22.01.18.
+//  Created by Tomasz Hepa on 19.01.18.
 //  Copyright © 2018 Tomasz Hepa. All rights reserved.
 //
 
 import UIKit
 
-class ToDosTableViewController: UITableViewController {
-
+class TableViewController: UITableViewController {
+    
+    var users: [String] = []
+    var newUser: String = ""
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
+        
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        
+        UserController.loadUserArray();
+        
+        tableView.reloadData()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        // some coment
         // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: - Table view data source
-
+    
+    
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        return UserController.userArray.count
+        
     }
-
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SecondCell", for: indexPath) as UITableViewCell
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MyFirstCell", for: indexPath) as UITableViewCell
+        
+        let user:User = UserController.userArray[indexPath.row]
+        cell.textLabel?.text = user.name
         return cell
     }
     
-
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let user:User = UserController.userArray[indexPath.row]
+        
+        if let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginVC") as? AddingUserViewController {
+            loginVC.user = user
+            self.navigationController?.pushViewController(loginVC, animated: true)  // use the story board id UserDetailVC
+            
+            //viewController.sayHello()
+        }
+    }
+    
+    //override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    //{
+        //}
+    
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -91,5 +125,6 @@ class ToDosTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+
 
 }

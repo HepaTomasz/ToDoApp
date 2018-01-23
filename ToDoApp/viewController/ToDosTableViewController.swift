@@ -1,73 +1,84 @@
 //
-//  TableViewController.swift
+//  ToDosTableViewController.swift
 //  ToDoApp
 //
-//  Created by Tomasz Hepa on 19.01.18.
+//  Created by Tomasz Hepa on 22.01.18.
 //  Copyright © 2018 Tomasz Hepa. All rights reserved.
 //
 
 import UIKit
 
-class TableViewController: UITableViewController {
+class ToDosTableViewController: UITableViewController {
     
-    var users: [String] = []
-    var newUser: String = ""
-    
-    
+    var user : User?
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-        
+
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        
-        UserController.loadUserArray();
-        
-        tableView.reloadData()
-    }
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.tableView.reloadData()
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // some coment
         // Dispose of any resources that can be recreated.
     }
-    
+
     // MARK: - Table view data source
-    
-    
-    
+
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return UserController.userArray.count
-        
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+    {
+        return 161.0
     }
     
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return  (user?.todoArray.count)!
+    }
+
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MyFirstCell", for: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SecondCell", for: indexPath) as! ToDoTableViewCell
+    
+        // Configure the cell...
         
-        let user:User = UserController.userArray[indexPath.row]
-        cell.textLabel?.text = user.name
+        let todo = user?.todoArray[indexPath.row]
+        cell.titleLabel.text = todo?.mTitle
+        
+        let formatter = DateFormatter()
+        formatter.dateStyle = DateFormatter.Style.short
+        let dateString = formatter.string(from: (todo?.mUntilDate)!)
+        cell.dataLabel.text = dateString
+        
+        cell.isDoneSwitch.isOn = (todo?.mIsDone)!
+        cell.describeTxtView.text = todo?.mDetails
+
         return cell
-   // }
+    }
     
-    //override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
-    //{
-        //}
-    
+    @IBAction func onBtnAddTouched(_ sender: Any) {
+        if let addToDoVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "addToDoVC") as? AddingToDoViewController {
+            
+            addToDoVC.user = user
+            
+            self.navigationController?.pushViewController(addToDoVC, animated: true)
+        }
+    }
     
     /*
     // Override to support conditional editing of the table view.
@@ -114,5 +125,4 @@ class TableViewController: UITableViewController {
     }
     */
 
-}
 }

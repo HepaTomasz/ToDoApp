@@ -11,13 +11,22 @@ import UIKit
 class AddingUserViewController: UIViewController {
     var name: String = ""
     
+    @IBOutlet weak var labelWrongPassword: UILabel!
     @IBOutlet weak var NameField: UITextField!
     @IBOutlet weak var txtFieldPassword: UITextField!
+    @IBOutlet weak var txtFieldTypePassword: UITextField!
+    
+    var user : User?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        //if {
+            
+            
+    //labelWrongPassword != nil;)
+      //  labelWrongPassword.isHidden = true
         // Do any additional setup after loading the view.
     }
 
@@ -31,8 +40,30 @@ class AddingUserViewController: UIViewController {
         
         dismiss(animated: true, completion: nil)
     }
+    @IBAction func loginButtonTouched(_ sender: Any) {
     
-
+    var userPassword = user?.password
+       if txtFieldTypePassword.text == user?.password {
+        
+            if let toDosTableViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ToDosTableViewController") as? ToDosTableViewController {
+                
+                toDosTableViewController.user = user
+                
+                self.navigationController?.pushViewController(toDosTableViewController, animated: true)
+            }
+        
+       }
+       else
+       {
+            labelWrongPassword.isHidden = false
+       }
+        
+        // validate password given by textfield with password from user object
+        
+        // if right, than push to the next view controller and hand over the user object
+        
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -42,5 +73,6 @@ class AddingUserViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+
 
 }
