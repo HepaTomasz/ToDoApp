@@ -17,6 +17,8 @@
 		EB26A423201259BC001FC839 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB26A421201259BC001FC839 /* LaunchScreen.storyboard */; };
 		EB26A42D20125BE7001FC839 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB26A42C20125BE7001FC839 /* TableViewController.swift */; };
 		EB8854A32015D1ED00EE7711 /* AddingUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8854A22015D1ED00EE7711 /* AddingUserViewController.swift */; };
+		EBDC7D7D201779ED002382DE /* todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDC7D7C201779ED002382DE /* todo.swift */; };
+		EBDC7D81201783F4002382DE /* AddingToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDC7D80201783F4002382DE /* AddingToDoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		EB26A424201259BC001FC839 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB26A42C20125BE7001FC839 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		EB8854A22015D1ED00EE7711 /* AddingUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddingUserViewController.swift; sourceTree = "<group>"; };
+		EBDC7D7C201779ED002382DE /* todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = todo.swift; sourceTree = "<group>"; };
+		EBDC7D80201783F4002382DE /* AddingToDoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddingToDoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,19 +68,45 @@
 		EB26A417201259BC001FC839 /* ToDoApp */ = {
 			isa = PBXGroup;
 			children = (
-				EB26A42C20125BE7001FC839 /* TableViewController.swift */,
+				EBDC7D8420179C47002382DE /* views */,
+				EBDC7D8320179C36002382DE /* models */,
+				EBDC7D8220179C2E002382DE /* viewController */,
 				EB26A418201259BC001FC839 /* AppDelegate.swift */,
 				EB26A41C201259BC001FC839 /* Main.storyboard */,
-				EB24CEFF20163700007547BF /* ToDosTableViewController.swift */,
-				EB24CEFD20162F59007547BF /* ToDoTableViewCell.swift */,
-				EB8854A22015D1ED00EE7711 /* AddingUserViewController.swift */,
 				EB24CEF92015EA73007547BF /* UserController.swift */,
 				EB26A41F201259BC001FC839 /* Assets.xcassets */,
 				EB26A421201259BC001FC839 /* LaunchScreen.storyboard */,
 				EB26A424201259BC001FC839 /* Info.plist */,
-				EB24CEFB2016184B007547BF /* User.swift */,
 			);
 			path = ToDoApp;
+			sourceTree = "<group>";
+		};
+		EBDC7D8220179C2E002382DE /* viewController */ = {
+			isa = PBXGroup;
+			children = (
+				EB26A42C20125BE7001FC839 /* TableViewController.swift */,
+				EBDC7D80201783F4002382DE /* AddingToDoViewController.swift */,
+				EB24CEFF20163700007547BF /* ToDosTableViewController.swift */,
+				EB8854A22015D1ED00EE7711 /* AddingUserViewController.swift */,
+			);
+			path = viewController;
+			sourceTree = "<group>";
+		};
+		EBDC7D8320179C36002382DE /* models */ = {
+			isa = PBXGroup;
+			children = (
+				EB24CEFB2016184B007547BF /* User.swift */,
+				EBDC7D7C201779ED002382DE /* todo.swift */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		EBDC7D8420179C47002382DE /* views */ = {
+			isa = PBXGroup;
+			children = (
+				EB24CEFD20162F59007547BF /* ToDoTableViewCell.swift */,
+			);
+			path = views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,8 +186,10 @@
 				EB24CF0020163700007547BF /* ToDosTableViewController.swift in Sources */,
 				EB24CEFA2015EA73007547BF /* UserController.swift in Sources */,
 				EB24CEFE20162F59007547BF /* ToDoTableViewCell.swift in Sources */,
+				EBDC7D7D201779ED002382DE /* todo.swift in Sources */,
 				EB24CEFC2016184B007547BF /* User.swift in Sources */,
 				EB8854A32015D1ED00EE7711 /* AddingUserViewController.swift in Sources */,
+				EBDC7D81201783F4002382DE /* AddingToDoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
