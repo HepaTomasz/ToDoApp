@@ -63,6 +63,10 @@ class AddingUserViewController: UIViewController {
         // if right, than push to the next view controller and hand over the user object
         
     }
+    @IBAction func cancelButtonTouched(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    
+    }
     
     /*
     // MARK: - Navigation

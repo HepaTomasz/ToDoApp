@@ -14,7 +14,6 @@ class Todo: NSObject, NSCoding {
     var mUntilDate : Date
     var mIsDone : Bool = false
     
-    
     required init(coder aDecoder: NSCoder) {
         mTitle = aDecoder.decodeObject(forKey: "title") as! String
         mDetails = aDecoder.decodeObject(forKey: "details") as! String

@@ -9,11 +9,12 @@
 import UIKit
 
 class ToDosTableViewController: UITableViewController {
-    
     var user : User?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tableView.rowHeight = 161
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -64,7 +65,6 @@ class ToDosTableViewController: UITableViewController {
         formatter.dateStyle = DateFormatter.Style.short
         let dateString = formatter.string(from: (todo?.mUntilDate)!)
         cell.dataLabel.text = dateString
-        
         cell.isDoneSwitch.isOn = (todo?.mIsDone)!
         cell.describeTxtView.text = todo?.mDetails
 
@@ -78,6 +78,23 @@ class ToDosTableViewController: UITableViewController {
             
             self.navigationController?.pushViewController(addToDoVC, animated: true)
         }
+    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let todo:Todo = (user?.todoArray[indexPath.row])!
+        
+        if let addToDoVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "addToDoVC") as? AddingToDoViewController {
+            addToDoVC.todo = todo
+            addToDoVC.shouldHideIsDoneButton = false
+            self.navigationController?.pushViewController(addToDoVC, animated: true)
+        }
+    }
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            print("Deleted")
+            
+            self.user?.todoArray.remove(at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            }
     }
     
     /*

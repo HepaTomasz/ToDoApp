@@ -12,16 +12,14 @@ class TableViewController: UITableViewController {
     
     var users: [String] = []
     var newUser: String = ""
-    
+    var userController = UserController.self
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
-        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-        
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
@@ -67,15 +65,24 @@ class TableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let user:User = UserController.userArray[indexPath.row]
-        
         if let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginVC") as? AddingUserViewController {
             loginVC.user = user
             self.navigationController?.pushViewController(loginVC, animated: true)  // use the story board id UserDetailVC
             
+            
             //viewController.sayHello()
         }
     }
-    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            print("Deleted")
+            
+            self.userController.userArray.remove(at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+    }
+  
+    }
     //override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     //{
         //}
@@ -127,4 +134,4 @@ class TableViewController: UITableViewController {
     */
 
 
-}
+
