@@ -14,7 +14,6 @@ class User: NSObject, NSCoding {
     var todoArray :Array<Todo> = []
     
     
-    
     // CONSTRUCTORE
     
     required init(coder aDecoder: NSCoder) {
@@ -47,11 +46,14 @@ class User: NSObject, NSCoding {
        // add new Todo
        todoArray.append(todo)
         
+      
+        
        return todo
     }
     
-
+    func  removeTodo (atIndex:Int) {
+        todoArray.remove(at: atIndex)
+        UserController.saveUserArray()
    
-
-
+    }
 }

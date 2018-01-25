@@ -10,11 +10,16 @@ import UIKit
 
 class ToDosTableViewController: UITableViewController {
     var user : User?
-
+  
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.tableView.rowHeight = 161
+        
+        let tempImageView = UIImageView(image: UIImage(named: "background"))
+        tempImageView.frame = self.tableView.frame
+        self.tableView.backgroundView = tempImageView;
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -59,15 +64,16 @@ class ToDosTableViewController: UITableViewController {
         // Configure the cell...
         
         let todo = user?.todoArray[indexPath.row]
-        cell.titleLabel.text = todo?.mTitle
         
         let formatter = DateFormatter()
         formatter.dateStyle = DateFormatter.Style.short
         let dateString = formatter.string(from: (todo?.mUntilDate)!)
+        
+        cell.titleLabel.text = todo?.mTitle
         cell.dataLabel.text = dateString
         cell.isDoneSwitch.isOn = (todo?.mIsDone)!
         cell.describeTxtView.text = todo?.mDetails
-
+        cell.backgroundColor = UIColor.clear
         return cell
     }
     
@@ -92,7 +98,7 @@ class ToDosTableViewController: UITableViewController {
         if editingStyle == .delete {
             print("Deleted")
             
-            self.user?.todoArray.remove(at: indexPath.row)
+            self.user?.removeTodo(atIndex: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
             }
     }

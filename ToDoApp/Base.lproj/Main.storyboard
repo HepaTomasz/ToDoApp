@@ -278,7 +278,6 @@
                                     <outlet property="dataLabel" destination="V6C-ju-WDi" id="DVs-qU-rwh"/>
                                     <outlet property="describeTxtView" destination="UKV-lC-iLM" id="Vge-0K-34U"/>
                                     <outlet property="isDoneSwitch" destination="IGB-RK-xJH" id="USb-ir-hIQ"/>
-                                    <outlet property="myImage" destination="Gbc-hf-9dN" id="qHW-A6-XKA"/>
                                     <outlet property="titleLabel" destination="WP0-TZ-APa" id="qhc-hD-PxU"/>
                                 </connections>
                             </tableViewCell>
@@ -443,7 +442,7 @@
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
-                        <outlet property="imgView" destination="tWY-5U-j2k" id="FxL-7c-AhV"/>
+                        <outlet property="imgView" destination="tWY-5U-j2k" id="cHs-iT-vez"/>
                         <outlet property="isDoneSwitch" destination="snk-hg-Q5Q" id="cMf-LL-Jxq"/>
                         <outlet property="labelFinished" destination="Isi-aW-fDN" id="ySU-pf-jtk"/>
                         <outlet property="txtFieldTitle" destination="Rox-fE-efV" id="v17-Fy-tRV"/>

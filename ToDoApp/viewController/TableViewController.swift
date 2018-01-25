@@ -17,9 +17,11 @@ class TableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        let tempImageView = UIImageView(image: UIImage(named: "background"))
+        tempImageView.frame = self.tableView.frame
+        self.tableView.backgroundView = tempImageView;
         // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        // self.clearsSelectionOnViewWillAppear = true
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
@@ -59,6 +61,8 @@ class TableViewController: UITableViewController {
         
         let user:User = UserController.userArray[indexPath.row]
         cell.textLabel?.text = user.name
+        cell.backgroundColor = UIColor.clear
+        cell.textLabel?.textColor = UIColor.white
         return cell
     }
     
@@ -77,7 +81,8 @@ class TableViewController: UITableViewController {
         if editingStyle == .delete {
             print("Deleted")
             
-            self.userController.userArray.remove(at: indexPath.row)
+          //  self.userController.userArray.remove(at: indexPath.row)
+            self.userController.removeUser(atIndex: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
         }
     }

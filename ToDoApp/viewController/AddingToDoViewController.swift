@@ -16,6 +16,7 @@ class AddingToDoViewController: UIViewController {
     var pickedImage:UIImage?
 
    
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var labelFinished: UILabel!
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var txtFieldTitle: UITextField!
@@ -26,6 +27,7 @@ class AddingToDoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         isDoneSwitch.isHidden = shouldHideIsDoneButton
         
         if (isDoneSwitch.isHidden == false)
@@ -38,6 +40,7 @@ class AddingToDoViewController: UIViewController {
             untilDatePicker.date = (todo?.mUntilDate)!
             
         }
+ 
     }
 
     override func didReceiveMemoryWarning() {
