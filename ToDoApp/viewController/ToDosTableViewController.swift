@@ -10,7 +10,8 @@ import UIKit
 
 class ToDosTableViewController: UITableViewController {
     var user : User?
-  
+   
+    @IBOutlet weak var imgViewStatus: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,12 +69,33 @@ class ToDosTableViewController: UITableViewController {
         let formatter = DateFormatter()
         formatter.dateStyle = DateFormatter.Style.short
         let dateString = formatter.string(from: (todo?.mUntilDate)!)
+       
+        if (todo?.mImageData) != nil {
+             cell.myImage.image = UIImage(data:(todo?.mImageData)!)
+        }
+        
         
         cell.titleLabel.text = todo?.mTitle
         cell.dataLabel.text = dateString
-        cell.isDoneSwitch.isOn = (todo?.mIsDone)!
+        if (todo?.mIsDone != nil)
+        {
+            cell.isDoneSwitch.isOn = (todo?.mIsDone)!
+        }
         cell.describeTxtView.text = todo?.mDetails
         cell.backgroundColor = UIColor.clear
+        
+        
+        if todo?.mIsDone == true {
+            cell.imgViewStatus.image = #imageLiteral(resourceName: "done2")
+            
+        }
+        else {
+            cell.imgViewStatus.image = #imageLiteral(resourceName: "notDone")
+        }
+        
+        
+        
+        
         return cell
     }
     

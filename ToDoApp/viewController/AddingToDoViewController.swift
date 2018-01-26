@@ -36,9 +36,14 @@ class AddingToDoViewController: UIViewController {
             labelFinished.isHidden = false
             txtFieldTitle.text = todo?.mTitle
             txtViewDetails.text = todo?.mDetails
-            isDoneSwitch.isOn = (todo?.mIsDone)!
+            if (todo?.mIsDone != nil) {
+                isDoneSwitch.isOn = (todo?.mIsDone)!
+            }
             untilDatePicker.date = (todo?.mUntilDate)!
             
+            if (todo?.mImageData != nil) {
+            imgView.image = UIImage(data:(todo?.mImageData)!)
+            }
         }
  
     }
@@ -53,7 +58,7 @@ class AddingToDoViewController: UIViewController {
         if (isDoneSwitch.isHidden == true)
         {
             // that means the user wants to create a new one todo
-            self.user?.createAndAddNewToDo(ppTitle: txtFieldTitle.text!, ppDetails: txtViewDetails.text,ppUntilDate: untilDatePicker.date,ppIsDone: isDoneSwitch.isOn)
+            self.user?.createAndAddNewToDo(ppTitle: txtFieldTitle.text, ppDetails: txtViewDetails.text,ppUntilDate: untilDatePicker.date,ppIsDone: isDoneSwitch.isOn, ppImage: imgView.image)
            
         }
         else{
@@ -63,6 +68,8 @@ class AddingToDoViewController: UIViewController {
             todo?.mDetails = txtViewDetails.text!
             todo?.mIsDone = isDoneSwitch.isOn
             todo?.mUntilDate = untilDatePicker.date
+            todo?.mImageData = UIImagePNGRepresentation(imgView.image!)
+          
 
             
         }
@@ -88,6 +95,7 @@ class AddingToDoViewController: UIViewController {
 extension AddingToDoViewController: UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        let path = info[UIImagePickerControllerMediaURL] as? String
         self.pickedImage = image
         imgView.image = image
         picker.dismiss(animated: true, completion: nil)

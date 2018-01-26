@@ -38,17 +38,15 @@ class User: NSObject, NSCoding {
         self.password = password
     }
     
-    func createAndAddNewToDo(ppTitle:String, ppDetails:String, ppUntilDate:Date, ppIsDone:Bool) -> Todo
+    func createAndAddNewToDo(ppTitle:String?, ppDetails:String, ppUntilDate:Date, ppIsDone:Bool?, ppImage:UIImage?)
     {
         // create new Todo
-        let todo = Todo.init(pTitle:ppTitle, pDetails:ppDetails, pUntilDate:ppUntilDate, pIsDone:ppIsDone)
+        let todo = Todo.init(pTitle:ppTitle, pDetails:ppDetails, pUntilDate:ppUntilDate, pIsDone:ppIsDone, pImage: ppImage)
+        todoArray.append(todo)
+        
         
        // add new Todo
-       todoArray.append(todo)
-        
-      
-        
-       return todo
+       
     }
     
     func  removeTodo (atIndex:Int) {

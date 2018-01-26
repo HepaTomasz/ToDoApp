@@ -9,20 +9,18 @@
 import UIKit
 
 class Todo: NSObject, NSCoding {
-    var mTitle : String
+    var mTitle : String?
     var mDetails : String
     var mUntilDate : Date
-    var mIsDone : Bool = false
+    var mIsDone : Bool?
+    var mImageData : Data?
     
     required init(coder aDecoder: NSCoder) {
-        mTitle = aDecoder.decodeObject(forKey: "title") as! String
+        mTitle = aDecoder.decodeObject(forKey: "title") as? String
         mDetails = aDecoder.decodeObject(forKey: "details") as! String
         mUntilDate = aDecoder.decodeObject(forKey: "untilDate") as! Date
-//
-//        if aDecoder.containsValue(forKey: "isDone")
-//        {
-//            mIsDone = aDecoder.decodeObject(forKey: "isDone") as! Bool
-//        }
+        mImageData = aDecoder.decodeObject(forKey: "imageData") as? Data
+        mIsDone = aDecoder.decodeObject(forKey: "isDone") as? Bool
     }
     
     func encode(with aCoder: NSCoder) {
@@ -30,15 +28,33 @@ class Todo: NSObject, NSCoding {
         aCoder.encode(mDetails, forKey: "details")
         aCoder.encode(mUntilDate, forKey: "untilDate")
         aCoder.encode(mIsDone, forKey: "isDone")
+        aCoder.encode(mImageData, forKey: "imageData")
     }
     
     // first initalize
-    init( pTitle:String, pDetails:String, pUntilDate:Date, pIsDone:Bool )
+    init( pTitle:String?, pDetails:String, pUntilDate:Date, pIsDone:Bool?, pImage:UIImage?)
     {
-        mTitle = pTitle
+        if let title = pTitle
+        {
+            mTitle = title
+        }
+        
         mDetails = pDetails
         mUntilDate = pUntilDate
-        mIsDone = pIsDone
-
+        
+        if let isDone = pIsDone {
+            mIsDone = isDone
+        }
+        
+        if let image = pImage
+        {
+            mImageData = UIImagePNGRepresentation(image)
+        }
+        else
+        {
+            mImageData = nil
+        }
     }
+            
 }
+

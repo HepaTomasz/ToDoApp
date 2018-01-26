@@ -10,6 +10,7 @@ import UIKit
 
 class ToDoTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var imgViewStatus: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var myImage: UIImageView!
     @IBOutlet weak var describeTxtView: UITextView!
