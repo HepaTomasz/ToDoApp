@@ -24,9 +24,10 @@ class AddingToDoViewController: UIViewController {
     @IBOutlet weak var untilDatePicker: UIDatePicker!
     @IBOutlet weak var isDoneSwitch: UISwitch!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         
         isDoneSwitch.isHidden = shouldHideIsDoneButton
         
@@ -38,6 +39,7 @@ class AddingToDoViewController: UIViewController {
             txtViewDetails.text = todo?.mDetails
             if (todo?.mIsDone != nil) {
                 isDoneSwitch.isOn = (todo?.mIsDone)!
+                
             }
             untilDatePicker.date = (todo?.mUntilDate)!
             
