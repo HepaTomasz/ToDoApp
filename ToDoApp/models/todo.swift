@@ -48,7 +48,7 @@ class Todo: NSObject, NSCoding {
         
         if let image = pImage
         {
-            mImageData = UIImagePNGRepresentation(image)
+            mImageData = image.pngData()
         }
         else
         {
