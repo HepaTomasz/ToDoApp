@@ -10,6 +10,7 @@ import UIKit
 
 class TableViewController: UITableViewController {
     
+    @IBOutlet weak var infoButton: UIBarButtonItem!
     var users: [String] = []
     var newUser: String = ""
     var userController = UserController.self
@@ -87,7 +88,7 @@ class TableViewController: UITableViewController {
         }
     }
   
-    }
+}
     //override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     //{
         //}

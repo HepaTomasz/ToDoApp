@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F1FC04122E63D5600BDBF6B /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1FC04022E63D5600BDBF6B /* InfoViewController.swift */; };
 		EB24CEFA2015EA73007547BF /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB24CEF92015EA73007547BF /* UserController.swift */; };
 		EB24CEFC2016184B007547BF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB24CEFB2016184B007547BF /* User.swift */; };
 		EB24CEFE20162F59007547BF /* ToDoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB24CEFD20162F59007547BF /* ToDoTableViewCell.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F1FC04022E63D5600BDBF6B /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		EB24CEF92015EA73007547BF /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		EB24CEFB2016184B007547BF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		EB24CEFD20162F59007547BF /* ToDoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewCell.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				EBDC7D80201783F4002382DE /* AddingToDoViewController.swift */,
 				EB24CEFF20163700007547BF /* ToDosTableViewController.swift */,
 				EB8854A22015D1ED00EE7711 /* AddingUserViewController.swift */,
+				1F1FC04022E63D5600BDBF6B /* InfoViewController.swift */,
 			);
 			path = viewController;
 			sourceTree = "<group>";
@@ -186,6 +189,7 @@
 				EB26A42D20125BE7001FC839 /* TableViewController.swift in Sources */,
 				EB24CF0020163700007547BF /* ToDosTableViewController.swift in Sources */,
 				EB24CEFA2015EA73007547BF /* UserController.swift in Sources */,
+				1F1FC04122E63D5600BDBF6B /* InfoViewController.swift in Sources */,
 				EB24CEFE20162F59007547BF /* ToDoTableViewCell.swift in Sources */,
 				EBDC7D7D201779ED002382DE /* todo.swift in Sources */,
 				EB24CEFC2016184B007547BF /* User.swift in Sources */,
