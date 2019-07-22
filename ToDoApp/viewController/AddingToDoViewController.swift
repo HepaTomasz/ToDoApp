@@ -70,7 +70,7 @@ class AddingToDoViewController: UIViewController {
             todo?.mDetails = txtViewDetails.text!
             todo?.mIsDone = isDoneSwitch.isOn
             todo?.mUntilDate = untilDatePicker.date
-            todo?.mImageData = imgView.image!.pngData()
+            todo?.mImageData = imgView.image?.pngData()
           
 
             
