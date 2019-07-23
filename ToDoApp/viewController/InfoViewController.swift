@@ -27,16 +27,18 @@ class InfoViewController: UIViewController {
         
         setGradientBackground()
         let label = UILabel(frame: CGRect.zero)
-        label.text = "Here I have to provide user with some informations"
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
+        label.font = UIFont.systemFont(ofSize: 16.0)
+        label.text = "This is TODOApp An application that allows you to prepare a list of things to do :)"
         self.view.addSubview(label)
         
         let widthConstraint = NSLayoutConstraint(item: label, attribute: .width, relatedBy: .equal,
-                                                 toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 250)
+                                                 toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 400)
         
         let heightConstraint = NSLayoutConstraint(item: label, attribute: .height, relatedBy: .equal,
-                                                  toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 100)
+                                                  toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 300)
         
         let xConstraint = NSLayoutConstraint(item: label, attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .centerX, multiplier: 1, constant: 0)
         
